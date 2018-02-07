@@ -1,6 +1,6 @@
 # AndroidBug5497Workaround
 
-AndroidBug5497Workaround解决方案(改良,增加是否监听调整)
+AndroidBug5497Workaround解决方案(改良, 修复Bug, 增加是否监听调整)
 
 <pre>
 WorkAround workAround = new WorkAround(this);
