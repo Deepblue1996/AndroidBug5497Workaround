@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AndroidBug5497Workaround</string>
+    <string name="input_string">点击输入</string>
+</resources>
