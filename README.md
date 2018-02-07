@@ -2,10 +2,10 @@
 
 AndroidBug5497Workaround解决方案(改良,增加是否监听调整)
 
-<pre>        // 添加监听
-        WorkAround workAround = new WorkAround(this);
-        workAround.addOnGlobalLayoutListener();
-        //workAround.reMoveOnGlobalLayoutListener();</pre>
+<pre>
+WorkAround workAround = new WorkAround(this);
+workAround.addOnGlobalLayoutListener(); // 添加监听
+workAround.reMoveOnGlobalLayoutListener(); // 取消监听</pre>
 
 How to
 
