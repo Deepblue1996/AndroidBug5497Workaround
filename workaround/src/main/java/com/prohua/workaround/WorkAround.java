@@ -10,6 +10,7 @@ import android.widget.FrameLayout;
 /**
  * AndroidBug5497Workaround
  * 输入法解决方案(改良,增加是否监听调整)
+ *
  * @author Deep
  * @date 2017/8/8 0008
  */
@@ -19,15 +20,14 @@ public class WorkAround {
     private int usableHeightPrevious;
     private FrameLayout.LayoutParams frameLayoutParams;
     private int contentHeight;
-    private boolean isfirst = true;
-    private Activity activity;
+    private boolean isFirst = true;
     private int statusBarHeight;
 
     private boolean have = true;
 
     private volatile static WorkAround workAround;
 
-    private WorkAround(Activity activity){
+    private WorkAround(Activity activity) {
         initWorkAround(activity);
     }
 
@@ -46,8 +46,7 @@ public class WorkAround {
         //获取状态栏的高度
         int resourceId = activity.getResources().getIdentifier("status_bar_height", "dimen", "android");
         statusBarHeight = activity.getResources().getDimensionPixelSize(resourceId);
-        this.activity = activity;
-        FrameLayout content = (FrameLayout) activity.findViewById(android.R.id.content);
+        FrameLayout content = activity.findViewById(android.R.id.content);
         mChildOfContent = content.getChildAt(0);
 
         //界面出现变动都会调用这个监听事件
@@ -55,9 +54,9 @@ public class WorkAround {
             @Override
             public void onGlobalLayout() {
                 if (have) {
-                    if (isfirst) {
+                    if (isFirst) {
                         contentHeight = mChildOfContent.getHeight();//兼容华为等机型
-                        isfirst = false;
+                        isFirst = false;
                     }
                     possiblyResizeChildOfContent();
                 }
