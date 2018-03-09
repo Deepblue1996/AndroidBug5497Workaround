@@ -25,7 +25,24 @@ public class WorkAround {
 
     private boolean have = true;
 
-    public WorkAround(Activity activity) {
+    private volatile static WorkAround workAround;
+
+    private WorkAround(Activity activity){
+        initWorkAround(activity);
+    }
+
+    public static WorkAround newInstance(Activity activity) {
+        if (workAround == null) {
+            synchronized (WorkAround.class) {
+                if (workAround == null) {
+                    workAround = new WorkAround(activity);
+                }
+            }
+        }
+        return workAround;
+    }
+
+    public void initWorkAround(Activity activity) {
         //获取状态栏的高度
         int resourceId = activity.getResources().getIdentifier("status_bar_height", "dimen", "android");
         statusBarHeight = activity.getResources().getDimensionPixelSize(resourceId);

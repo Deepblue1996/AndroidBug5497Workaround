@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // 添加监听
-        WorkAround workAround = new WorkAround(this);
+        WorkAround workAround = WorkAround.newInstance(this);
         workAround.addOnGlobalLayoutListener();
         //workAround.reMoveOnGlobalLayoutListener();
     }
